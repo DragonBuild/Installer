@@ -5,6 +5,8 @@ nosudo() {
     exit 1
 }
 
+crd=$PWD
+
 [[ $UID == 0 || $EUID == 0 ]] && nosudo
 
 sudo -p "Password for installation: " printf "" || exit 1
@@ -58,7 +60,11 @@ installDragonBuild() {
     echo "source ~/.dragonbuild/internal/environment" >> .bash_profile
     echo "source ~/.dragonbuild/internal/environment" >> .profile
     source ~/.dragonbuild/internal/environment
+    cd ~/.dragonbuild 
+    git submodule update --init --recursive
+    cd ~
     sudo ln -s ~/.dragonbuild/dragon /opt/local/bin/dragon
 }
 
 installDragonBuild
+cd $crd
