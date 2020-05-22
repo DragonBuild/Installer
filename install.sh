@@ -20,8 +20,10 @@ command -v dpkg >/dev/null 2>&1 || need+="dpkg "
 command -v unzip >/dev/null 2>&1 || need+="unzip "
 
 macosInstall() {
-    read -p "Using Brew To Install Dependencies. Press Enter to Continue." || exit 1
-    brew install $need
+    if [ $need != "" ]; then
+      read -p "Using Brew To Install Dependencies. Press Enter to Continue." || exit 1
+      brew install $need
+    fi
 }
 
 linuxInstall() {
