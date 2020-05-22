@@ -50,11 +50,11 @@ installDragonBuild() {
     fi
     echo "Downloading DragonBuild..."
     cd /tmp
-    wget https://github.com/DragonBuild/DragonBuild/archive/master.zip
+    wget https://github.com/DragonBuild/DragonBuild/releases/download/1.0.0/DragonBuild.zip
     echo "Installing DragonBuild"
-    unzip master.zip -d ~/.dragonbuild
+    unzip DragonBuild.zip -d ~/.dragonbuild
     mv ~/.dragonbuild/DragonBuild-master/* ~/.dragonbuild && rm -rf ~/.dragonbuild/DragonBuild-master
-    rm -rf master.zip
+    rm -rf DragonBuild.zip
     cd ~
     echo "source ~/.dragonbuild/internal/environment" >> .zshrc
     echo "source ~/.dragonbuild/internal/environment" >> .bash_profile
