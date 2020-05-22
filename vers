@@ -1,1 +1,4 @@
 export DRAGONRV="1.0.1"
+if [ $DRAGONVERS != $DRAGONRV ]; then
+echo -e "${GenColor}[Dragon]${BoldColor} An Update is Avaliable! Install with 'dragon update'"
+fi
