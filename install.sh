@@ -53,7 +53,7 @@ installDragonBuild() {
     wget https://github.com/DragonBuild/DragonBuild/releases/download/1.0.0/DragonBuild.zip
     echo "Installing DragonBuild"
     unzip DragonBuild.zip -d ~/.dragonbuild
-    mv ~/.dragonbuild/DragonBuild-master/* ~/.dragonbuild && rm -rf ~/.dragonbuild/DragonBuild-master
+    mv ~/.dragonbuild/DragonBuild/* ~/.dragonbuild && rm -rf ~/.dragonbuild/DragonBuild-master
     rm -rf DragonBuild.zip
     cd ~
     echo "source ~/.dragonbuild/internal/environment" >> .zshrc
