@@ -61,6 +61,7 @@ installDragonBuild() {
     echo "source ~/.dragonbuild/internal/environment" >> .profile
     source ~/.dragonbuild/internal/environment
     cd ~/.dragonbuild 
+    git pull
     git submodule update --init --recursive
     cd ~
     sudo ln -s ~/.dragonbuild/dragon /opt/local/bin/dragon
