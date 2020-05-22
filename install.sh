@@ -48,7 +48,7 @@ installDragonBuild() {
     cd /tmp
     wget https://github.com/DragonBuild/DragonBuild/archive/master.zip
     echo "Installing DragonBuild"
-    unzip master.zip ~/.dragonbuild
+    unzip master.zip -d ~/.dragonbuild
     mv ~/.dragonbuild/DragonBuild-master/* ~/.dragonbuild && rm -rf ~/.dragonbuild/DragonBuild-master
     rm -rf master.zip
     cd ~
