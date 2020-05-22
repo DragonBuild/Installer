@@ -64,7 +64,7 @@ installDragonBuild() {
     git pull
     git submodule update --init --recursive
     cd ~
-    sudo ln -s ~/.dragonbuild/dragon /opt/local/bin/dragon
+    sudo ln -s ~/.dragonbuild/dragon /usr/local/bin/dragon
 }
 
 installDragonBuild
