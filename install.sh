@@ -21,14 +21,14 @@ command -v unzip >/dev/null 2>&1 || need+="unzip "
 
 macosInstall() {
     if [ $need != "" ]; then
-      read -p "Using Brew To Install Dependencies. Press Enter to Continue." || exit 1
+      read -p "Using Brew To Install Dependencies (${need}). Press Enter to Continue." || exit 1
       brew install $need
     fi
 }
 
 linuxInstall() {
     if [ $need != "" ]; then
-      read -p "Installing Dependencies. Press Enter to Continue." || exit 1
+      read -p "Installing Dependencies (${need}). Press Enter to Continue." || exit 1
       if [ -x "$(command -v apk)" ];       then sudo apk add --no-cache $need || failedinstall=1
        elif [ -x "$(command -v apt-get)" ]; then sudo apt-get install $need || failedinstall=1
        elif [ -x "$(command -v dnf)" ];     then sudo dnf install $need || failedinstall=1
