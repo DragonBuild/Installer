@@ -53,9 +53,6 @@ installDragonBuild() {
     git clone https://github.com/DragonBuild/DragonBuild.git
     mv DragonBuild .dragonbuild
     echo "Installing DragonBuild"
-    echo "source ~/.dragonbuild/internal/environment" >> .zshrc
-    echo "source ~/.dragonbuild/internal/environment" >> .bash_profile
-    echo "source ~/.dragonbuild/internal/environment" >> .profile
     source ~/.dragonbuild/internal/environment
     cd ~/.dragonbuild 
     git pull
