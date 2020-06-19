@@ -22,19 +22,20 @@ command -v dpkg >/dev/null 2>&1 || need+="dpkg "
 command -v unzip >/dev/null 2>&1 || need+="unzip "
 
 macosInstall() {
-    if [ $need != "" ]; then
+    if [ "$need" != "" ]; then
       read -p "Using Brew To Install Dependencies (${need}). Press Enter to Continue." || exit 1
       brew install $need
     fi
 }
 
 linuxInstall() {
-    if [ $need != "" ]; then
+    if [ "$need" != "" ]; then
       read -p "Installing Dependencies (${need}). Press Enter to Continue." || exit 1
       if [ -x "$(command -v apk)" ];       then sudo apk add --no-cache $need || failedinstall=1
        elif [ -x "$(command -v apt-get)" ]; then sudo apt-get install $need || failedinstall=1
        elif [ -x "$(command -v dnf)" ];     then sudo dnf install $need || failedinstall=1
        elif [ -x "$(command -v zypper)" ];  then sudo zypper install $need || failedinstall=1
+       elif [ -x "$(command -v yay)" ]; then yay -S $need || failedinstall=1
       else failedinstall=1;
       fi
       if [ $failedinstall == 1 ]; then
@@ -45,18 +46,17 @@ linuxInstall() {
 
 installDragonBuild() {
     distr=$(uname -s)
-    if [ $distr == "Darwin" ]; then macosInstall
+    if [ "$distr" == "Darwin" ]; then macosInstall
     else linuxInstall
     fi
     echo "Downloading DragonBuild..."
     cd ~
-    git clone https://github.com/DragonBuild/DragonBuild.git
-    mv DragonBuild .dragonbuild
+    git clone --recursive https://github.com/DragonBuild/DragonBuild.git .dragonbuild
     echo "Installing DragonBuild"
     source ~/.dragonbuild/internal/environment
     cd ~/.dragonbuild 
+    git config pull.rebase false
     git pull
-    git submodule update --init --recursive
     cd ~
     sudo ln -s ~/.dragonbuild/dragon /usr/local/bin/dragon
 }
