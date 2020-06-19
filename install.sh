@@ -21,15 +21,22 @@ command -v perl >/dev/null 2>&1 || need+="perl "
 command -v dpkg >/dev/null 2>&1 || need+="dpkg "
 command -v unzip >/dev/null 2>&1 || need+="unzip "
 
+iosInstall() {
+    if [ "$need" != "" ]; then
+      echo "Please Install the Following Dependencies (${need})."
+      exit 1
+    fi
+}
+
 macosInstall() {
-    if [ $need != "" ]; then
+    if [ "$need" != "" ]; then
       read -p "Using Brew To Install Dependencies (${need}). Press Enter to Continue." || exit 1
       brew install $need
     fi
 }
 
 linuxInstall() {
-    if [ $need != "" ]; then
+    if [ "$need" != "" ]; then
       read -p "Installing Dependencies (${need}). Press Enter to Continue." || exit 1
       if [ -x "$(command -v apk)" ];       then sudo apk add --no-cache $need || failedinstall=1
        elif [ -x "$(command -v apt-get)" ]; then sudo apt-get install $need || failedinstall=1
@@ -45,7 +52,11 @@ linuxInstall() {
 
 installDragonBuild() {
     distr=$(uname -s)
-    if [ $distr == "Darwin" ]; then macosInstall
+    arch=$(uname -p)
+    if [ "$distr" == "Darwin" ]; then 
+        if [ "$arch" == "arm" ] || [ "$arch" == "arm64" ]; then iosInstall
+        else macosInstall
+        fi
     else linuxInstall
     fi
     echo "Downloading DragonBuild..."
