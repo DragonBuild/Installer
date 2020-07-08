@@ -32,6 +32,7 @@ macosInstall() {
     if [ "$need" != "" ]; then
       read -p "Using Brew To Install Dependencies (${need}). Press Enter to Continue." || exit 1
       brew install $need
+      python3 -m pip install pyyaml regex
     fi
 }
 
@@ -46,6 +47,8 @@ linuxInstall() {
       fi
       if [ $failedinstall == 1 ]; then
         echo "Installing dependencies failed. You need to manually install: $need">&2; 
+      else 
+        python3 -m pip install pyyaml regex
       fi
     fi
 }
@@ -70,6 +73,7 @@ installDragonBuild() {
     git submodule update --init --recursive
     cd ~
     sudo ln -s ~/.dragonbuild/dragon /usr/local/bin/dragon
+    
 }
 
 installDragonBuild
