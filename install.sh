@@ -19,24 +19,21 @@ sudo -p "Password for installation: " printf "\n" || exit 1
 # Set need to "" for adding dependencies
 need=""
 
-# See if system is debian-based for different ninja name.
+# See if system is debian-based or Fedora linux for different ninja name.
 if [ -f "/etc/debian_version" ]; then
-    command -v wget >/dev/null 2>&1 || need+="wget "
     command -v ninja >/dev/null 2>&1 || need+="ninja-build "
-    command -v python3 >/dev/null 2>&1 || need+="python3 "
-    command -v ldid >/dev/null 2>&1 || need+="ldid "
-    command -v perl >/dev/null 2>&1 || need+="perl "
-    command -v dpkg >/dev/null 2>&1 || need+="dpkg "
-    command -v unzip >/dev/null 2>&1 || need+="unzip "
+elif grep -Fxq "ID=fedora" /etc/os_release; then
+    command -v ninja >/dev/null 2>&1 || need+="ninja-build "
 else
-    command -v wget >/dev/null 2>&1 || need+="wget "
     command -v ninja >/dev/null 2>&1 || need+="ninja "
-    command -v python3 >/dev/null 2>&1 || need+="python3 "
-    command -v ldid >/dev/null 2>&1 || need+="ldid "
-    command -v perl >/dev/null 2>&1 || need+="perl "
-    command -v dpkg >/dev/null 2>&1 || need+="dpkg "
-    command -v unzip >/dev/null 2>&1 || need+="unzip "
 fi
+
+command -v wget >/dev/null 2>&1 || need+="wget "
+command -v python3 >/dev/null 2>&1 || need+="python3 "
+command -v ldid >/dev/null 2>&1 || need+="ldid "
+command -v perl >/dev/null 2>&1 || need+="perl "
+command -v dpkg >/dev/null 2>&1 || need+="dpkg "
+command -v unzip >/dev/null 2>&1 || need+="unzip "
 
 iosInstall() {
     if [ "$need" != "" ]; then
