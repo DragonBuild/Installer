@@ -28,12 +28,10 @@ else
     command -v ninja >/dev/null 2>&1 || need+="ninja "
 fi
 
-command -v wget >/dev/null 2>&1 || need+="wget "
 command -v python3 >/dev/null 2>&1 || need+="python3 "
 command -v ldid >/dev/null 2>&1 || need+="ldid "
 command -v perl >/dev/null 2>&1 || need+="perl "
 command -v dpkg >/dev/null 2>&1 || need+="dpkg "
-command -v unzip >/dev/null 2>&1 || need+="unzip "
 
 iosInstall() {
     if [ "$need" != "" ]; then
