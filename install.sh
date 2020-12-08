@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 # Add colors for text
-export PrefixColor='\033[1;34m'
-export BoldColor='\033[1;37m'
-export NC='\033[0m'
+PrefixColor='\033[1;34m'
+BoldColor='\033[1;37m'
+NC='\033[0m'
 
 crd=$PWD
 
@@ -70,8 +70,12 @@ installDragonBuild() {
     distr=$(uname -s)
     arch=$(uname -p)
     if [ "$distr" == "Darwin" ]; then 
-        if [ "$arch" == "arm" ] || [ "$arch" == "arm64" ]; then iosInstall
-        else macosInstall
+        if [ "$arch" == "arm" ] || [ "$arch" == "arm64" ]; then
+	    if [ "${USER}" == "mobile" ]; then
+	        iosInstall
+	    else
+                macosInstall
+	    fi
         fi
     else linuxInstall
     fi
