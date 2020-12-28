@@ -81,8 +81,7 @@ installDragonBuild() {
     fi
     printf "${PrefixColor}[Dragon] ${BoldColor}Downloading DragonBuild...\n"
     cd ~
-    git clone --depth=1 https://github.com/DragonBuild/dragon.git
-    mv DragonBuild .dragonbuild
+    git clone --depth=1 https://github.com/DragonBuild/dragon.git .dragonbuild
     printf "${PrefixColor}[Dragon] ${BoldColor}Installing DragonBuild...\n"
     source ~/.dragonbuild/internal/environment
     cd ~/.dragonbuild 
