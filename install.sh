@@ -16,6 +16,8 @@ if [[ $UID == 0 || $EUID == 0 ]]; then
     exit
 fi
 
+printf "${BoldColor}starting dragon installer v${InstallerVersion}${NC}\n"
+
 # Get sudo perms
 sudo -p "sudo password (for symlinking /usr/local/bin/dragon): " printf "\n" || exit 1
 
@@ -96,19 +98,19 @@ installDragonBuild() {
     sudo ln -s ~/.dragonbuild/dragon /usr/local/bin/dragon
     
     printf "${PrefixColor}[Dragon] ${BoldColor}dragon v${DRAGONVERS} has been installed.${NC}\n"
-    printf "${PrefixColor}[Dragon] ${WhiteColor}Run 'dragon' for a list of tools included.${NC}\n\n"
+    printf "${WhiteColor}Run 'dragon' for a list of tools included.${NC}\n\n"
     
-    printf "${PrefixColor}[Dragon] ${BoldColor}dragon installer v${InstallerVersion}${NC}\n"
-    printf "${PrefixColor}[Dragon] ${WhiteColor}Contributors:\n  - kritanta\n  - quiprr\n  - diatrus${NC}\n\n"
+    printf "${BoldColor}dragon installer v${InstallerVersion} -=-=-${NC}\n"
+    printf "${WhiteColor}Github Link: https://dr.krit.me/ (https://github.com/DragonBuild/Installer)\n"
+    printf "${WhiteColor}Contributors:\n  - kritanta\n  - quiprr\n  - diatrus${NC}\n\n"
     
-    printf "${PrefixColor}[Dragon] ${BoldColor}dragon v${DRAGONVERS}${NC}\n"
-    printf "${PrefixColor}[Dragon] ${WhiteColor}Contributors:\n  - kritanta (author)\n  - l0renzo (DragonGen)\n  - monotrix\n  - iCrazeiOS${NC}\n\n"
+    printf "${BoldColor}dragon v${DRAGONVERS} -=-=-${NC}\n"
+    printf "${WhiteColor}Github Link: https://dragon.krit.me/ (https://github.com/DragonBuild/dragon)\n"
+    printf "${WhiteColor}Contributors:\n  - kritanta (author)\n  - l0renzo (DragonGen)\n  - monotrix\n  - iCrazeiOS${NC}\n\n"
     
-    printf "${PrefixColor}[Dragon] ${WhiteColor}'dragon update' to update to the latest build\n"
-    printf "${PrefixColor}[Dragon] ${WhiteColor}Contribute, file issues, or anything else:\n  - 'https://dragon.krit.me/\n"
-    printf "${PrefixColor}[Dragon] ${WhiteColor}~ enjoy <3\n"
-    
-    
+    printf "${WhiteColor}'dragon update' to update to the latest build\n\n"
+    printf "${WhiteColor}Contribute, file issues, or anything else:\n  - 'https://dragon.krit.me/\n\n"
+    printf "${NC}enjoy ~\n\n"
 }
 
 installDragonBuild
