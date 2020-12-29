@@ -14,7 +14,7 @@ if [[ $UID == 0 || $EUID == 0 ]]; then
 fi
 
 # Get sudo perms
-sudo -p "Password for installation: " printf "\n" || exit 1
+sudo -p "sudo password (for symlinking /usr/local/bin/dragon): " printf "\n" || exit 1
 
 # Set need to "" for adding dependencies
 need=""
@@ -22,7 +22,7 @@ need=""
 # See if system is debian-based or Fedora linux for different ninja name.
 if [ -f "/etc/debian_version" ]; then
     command -v ninja >/dev/null 2>&1 || need+="ninja-build "
-elif grep -Fxq "ID=fedora" /etc/os_release; then
+elif grep -Fxq "ID=fedora" /etc/os_release >/dev/null 2>&1; then
     command -v ninja >/dev/null 2>&1 || need+="ninja-build "
 else
     command -v ninja >/dev/null 2>&1 || need+="ninja "
