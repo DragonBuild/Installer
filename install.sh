@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+InstallerVersion="1.0.1"
+
 # Add colors for text
-PrefixColor='\033[1;34m'
+PrefixColor='\033[1;32m'
 BoldColor='\033[1;37m'
+WhiteColor='\033[0;37m'
 NC='\033[0m'
 
 crd=$PWD
@@ -79,16 +82,32 @@ installDragonBuild() {
         fi
     else linuxInstall
     fi
-    printf "${PrefixColor}[Dragon] ${BoldColor}Downloading DragonBuild...\n"
+    printf "${PrefixColor}[Dragon] ${BoldColor}downloading dragon main project${NC}\n"
     cd ~
     git clone --depth=1 https://github.com/DragonBuild/dragon.git .dragonbuild
-    printf "${PrefixColor}[Dragon] ${BoldColor}Installing DragonBuild...\n"
+    printf "${PrefixColor}[Dragon] ${WhiteColor}loading in environment${NC}\n"
     source ~/.dragonbuild/internal/environment
     cd ~/.dragonbuild 
+    printf "${PrefixColor}[Dragon] ${WhiteColor}running git pull${NC}\n"
     git pull
+    printf "${PrefixColor}[Dragon] ${BoldColor}downloading submodules${NC}\n"
     git submodule update --init --recursive
-    cd ~
+    printf "${PrefixColor}[Dragon] ${BoldColor}Creating symlink${NC}\n"
     sudo ln -s ~/.dragonbuild/dragon /usr/local/bin/dragon
+    
+    printf "${PrefixColor}[Dragon] ${BoldColor}dragon v${DRAGONVERS} has been installed.${NC}\n"
+    printf "${PrefixColor}[Dragon] ${WhiteColor}Run 'dragon' for a list of tools included.${NC}\n\n"
+    
+    printf "${PrefixColor}[Dragon] ${BoldColor}dragon installer v${InstallerVersion}${NC}\n"
+    printf "${PrefixColor}[Dragon] ${WhiteColor}Contributors:\n  - kritanta\n  - quiprr\n  - diatrus${NC}\n\n"
+    
+    printf "${PrefixColor}[Dragon] ${BoldColor}dragon v${DRAGONVERS}${NC}\n"
+    printf "${PrefixColor}[Dragon] ${WhiteColor}Contributors:\n  - kritanta (author)\n  - l0renzo (DragonGen)\n  - monotrix\n  - iCrazeiOS${NC}\n\n"
+    
+    printf "${PrefixColor}[Dragon] ${WhiteColor}'dragon update' to update to the latest build\n"
+    printf "${PrefixColor}[Dragon] ${WhiteColor}Contribute, file issues, or anything else:\n  - 'https://dragon.krit.me/\n"
+    printf "${PrefixColor}[Dragon] ${WhiteColor}~ enjoy <3\n"
+    
     
 }
 
