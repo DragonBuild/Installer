@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-InstallerVersion="1.0.1"
+InstallerVersion="1.0.2"
 
 # Add colors for text
 PrefixColor='\033[1;32m'
@@ -88,7 +88,7 @@ installDragonBuild() {
     cd ~
     git clone --depth=1 https://github.com/DragonBuild/dragon.git .dragonbuild
     printf "${PrefixColor}[Dragon] ${WhiteColor}loading in environment${NC}\n"
-    source ~/.dragonbuild/internal/environment
+    source ~/.dragonbuild/internal/data/environment
     cd ~/.dragonbuild 
     printf "${PrefixColor}[Dragon] ${WhiteColor}running git pull${NC}\n"
     git pull
@@ -100,11 +100,11 @@ installDragonBuild() {
     printf "${PrefixColor}[Dragon] ${BoldColor}dragon v${DRAGONVERS} has been installed.${NC}\n"
     printf "${WhiteColor}Run 'dragon' for a list of tools included.${NC}\n\n"
     
-    printf "${BoldColor}dragon installer v${InstallerVersion} -=-=-${NC}\n"
+    printf "${PrefixColor}dragon installer v${InstallerVersion} ${BoldColor}-=-=-${NC}\n"
     printf "${WhiteColor}Github Link: https://dr.krit.me/ (https://github.com/DragonBuild/Installer)\n"
     printf "${WhiteColor}Contributors:\n  - kritanta\n  - quiprr\n  - diatrus${NC}\n\n"
     
-    printf "${BoldColor}dragon v${DRAGONVERS} -=-=-${NC}\n"
+    printf "${PrefixColor}dragon v${DRAGONVERS} ${BoldColor}-=-=-${NC}\n"
     printf "${WhiteColor}Github Link: https://dragon.krit.me/ (https://github.com/DragonBuild/dragon)\n"
     printf "${WhiteColor}Contributors:\n  - kritanta (author)\n  - l0renzo (DragonGen)\n  - monotrix\n  - iCrazeiOS${NC}\n\n"
     
