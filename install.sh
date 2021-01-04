@@ -108,8 +108,8 @@ installDragonBuild() {
     printf "${WhiteColor}Github Link: https://dragon.krit.me/ (https://github.com/DragonBuild/dragon)\n"
     printf "${WhiteColor}Contributors:\n  - kritanta (author)\n  - l0renzo (DragonGen)\n  - monotrix\n  - iCrazeiOS${NC}\n\n"
     
-    printf "${WhiteColor}'dragon update' to update to the latest build\n\n"
-    printf "${WhiteColor}Contribute, file issues, or anything else:\n  - 'https://dragon.krit.me/\n\n"
+    printf "${WhiteColor}Use 'dragon update' to update to the latest build\n\n"
+    printf "${WhiteColor}Please contribute, file issues, or anything else:\n  - 'https://dragon.krit.me/\n\n"
     printf "${NC}enjoy ~\n\n"
 }
 
